@@ -7,10 +7,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "companyId", "email" }) })
 public class User implements Serializable {
 
 	/**
@@ -22,12 +30,18 @@ public class User implements Serializable {
 	@GeneratedValue
 	private Integer userId;
 
+	@NotBlank(message = "{companyId.obrigatorio}")
+	@Pattern(regexp = "^(1|2|5|7|10)", message = "{companyId.invalido}")
 	@Column
-	private Integer companyId;
+	private String companyId;
 
+	@NotBlank(message = "{email.obrigatorio}")
+	@Size(max = 255, message = "{email.tamanho_maximo}")
+	@Email(message = "{email.invalido}")
 	@Column
 	private String email;
 
+	@NotNull(message = "{birthdate.obrigatorio}")
 	@Column
 	@Temporal(TemporalType.DATE)
 	private Date birthdate;
@@ -56,14 +70,14 @@ public class User implements Serializable {
 	/**
 	 * @return the companyId
 	 */
-	public Integer getCompanyId() {
+	public String getCompanyId() {
 		return companyId;
 	}
 
 	/**
 	 * @param companyId the companyId to set
 	 */
-	public void setCompanyId(Integer companyId) {
+	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
 

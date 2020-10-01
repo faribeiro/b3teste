@@ -1,0 +1,8 @@
+br\com\b3teste\exception\UsuarioDuplicadoException.class
+br\com\b3teste\controller\UserController.class
+br\com\b3teste\config\RestResponseEntityExceptionHandler.class
+br\com\b3teste\model\User.class
+br\com\b3teste\service\UserService.class
+br\com\b3teste\repository\UserRepository.class
+br\com\b3teste\config\SwaggerConfiguration.class
+br\com\b3teste\B3testeApplication.class
