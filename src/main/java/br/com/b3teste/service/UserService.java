@@ -1,13 +1,10 @@
 package br.com.b3teste.service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import br.com.b3teste.exception.UsuarioDuplicadoException;
@@ -44,8 +41,8 @@ public class UserService {
 		userRepository.deleteById(id);
 	}
 
-	@Scheduled(initialDelay = 0, fixedRate = 30000)
-	public void importCSVFile() {
-		System.out.println("The time is now " + new SimpleDateFormat("HH:mm:ss").format(new Date()));
+	public void saveAll(List<? extends User> list) {
+		userRepository.saveAll(list);
 	}
+
 }

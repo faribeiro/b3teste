@@ -28,6 +28,7 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue
+	@Column
 	private Integer userId;
 
 	@NotBlank(message = "{companyId.obrigatorio}")
@@ -51,6 +52,21 @@ public class User implements Serializable {
 	 */
 	public User() {
 		super();
+	}
+
+	/**
+	 * @param companyId
+	 * @param email
+	 * @param birthdate
+	 */
+	public User(
+			@NotBlank(message = "{companyId.obrigatorio}") @Pattern(regexp = "^(1|2|5|7|10)", message = "{companyId.invalido}") String companyId,
+			@NotBlank(message = "{email.obrigatorio}") @Size(max = 255, message = "{email.tamanho_maximo}") @Email(message = "{email.invalido}") String email,
+			@NotNull(message = "{birthdate.obrigatorio}") Date birthdate) {
+		super();
+		this.companyId = companyId;
+		this.email = email;
+		this.birthdate = birthdate;
 	}
 
 	/**
