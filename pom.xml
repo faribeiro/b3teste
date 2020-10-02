@@ -77,7 +77,7 @@
 			                <goal>repackage</goal>
 			            </goals>
 			            <configuration>
-			                <classifier>spring-boot</classifier>
+			            	<outputDirectory>${project.basedir}</outputDirectory>
 			                <mainClass>
 			                  br.com.b3teste.B3testeApplication
 			                </mainClass>
@@ -85,13 +85,6 @@
 			        </execution>
 			    </executions>
 			</plugin>
-			<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-jar-plugin</artifactId>
-		        <configuration>
-		          <outputDirectory>${project.basedir}</outputDirectory>
-		        </configuration>
-		      </plugin>
 		</plugins>
 	</build>
 
